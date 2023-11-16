@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <style>
+        .crypto-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .crypto-info {
+            display: flex;
+            flex-direction: column; /* Change to column */
+            align-items: center;
+            width: 80%; /* Adjust the width as needed */
+            margin-top: 20px; /* Add space between the search bar and crypto information */
+        }
+
+        .crypto-box {
+            border: 2px solid #4caf50; /* Green border */
+            background-color: #f1f8e9; /* Light green background */
+            padding: 10px;
+            margin: 10px;
+            width: 80%; /* Adjust the width of each box */
+            border-radius: 8px; /* Rounded corners */
+        }
+
+    </style>
+    <title>Crypto Information</title>
+</head>
+<body class="bg-gray-200 p-4">
+
+<div class="max-w-md mx-auto bg-white p-4 rounded-md shadow-md crypto-container">
+    <h1 class="text-2xl font-bold mb-4 text-green-700">Crypto Information</h1>
+
+
+    <div class="crypto-info">
+        {% if cryptoPairs is not empty %}
+            {% for pair in cryptoPairs %}
+                <div class="crypto-box">
+                    <p class="font-bold text-indigo-700">Symbol: {{ pair.symbol }}</p>
+                    <p class="text-teal-700">Last Price: ${{ pair.lastPrice }}</p>
+                    <p class="text-orange-700">High Price: ${{ pair.highPrice }}</p>
+                    <p class="text-red-700">Low Price: ${{ pair.lowPrice }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="text-gray-600">No data found.</p>
+        {% endif %}
+    </div>
+
+</div>
+
+</body>
+</html>
