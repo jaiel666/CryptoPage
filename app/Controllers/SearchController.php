@@ -22,7 +22,7 @@ class SearchController
         $cryptoInfo = $this->api->getCryptoInfoBySymbol($pairInput);
 
         return new Response(
-            'crypto/search',
+            'search/show',
             [
                 'cryptoPairs' => [$cryptoInfo],
                 'header' => 'SEARCH RESULT',
