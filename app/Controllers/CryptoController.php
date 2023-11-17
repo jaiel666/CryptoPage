@@ -22,14 +22,7 @@ class CryptoController
         $cryptoPairData = [];
 
         foreach ($cryptoPairs as $pair) {
-            $info = $this->api->getInfo($pair);
-
-            $cryptoPairData[] = [
-                'symbol' => $info->getSymbol(),
-                'lastPrice' => $info->getLastPrice(),
-                'highPrice' => $info->getHighPrice(),
-                'lowPrice' => $info->getLowPrice(),
-            ];
+            $cryptoPairData[] = $this->api->getInfo($pair);
         }
 
         return new Response(
